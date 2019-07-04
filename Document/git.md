@@ -163,12 +163,73 @@ $ git merge hotfix
 ### 2. Topic Branches
     1 vấn đề có thể được break ra nhiều giải pháp, và giải pháp tốt nhất sẽ được merge vào nhánh chính. Các nhánh topic là các nhánh short-live, có thể xóa bỏ khi hoàn thành topic.
 
+![](./images/git-topic.png)
+
 ## 3.4. Remote Branches
+
+- Clone 1 repo từ remote: `git clone <URL>`
+- Lấy dữ liệu trên remote chưa có trên local: `git fetch <remote>`
+- Push: `git push <remote> <branch>`
+- Pull dữ liệu từ remote: `git pull <remote>`
+- Xóa nhánh remote: `git push <Remote> --delete <Nhánh muốn xóa>`  
 
 ## 3.5. Rebasing
 
-![](./images/git-topic.png)
+- Merge: Khi sử dụng merge để tích hợp 2 nhánh với nhau. Câu lệnh merge sẽ lấy snapshot mới nhất của mỗi branch rồi combine với nhau để tạo ra một merge commit. Merge commit sẽ có parents là từ 2 nhánh khác nhau.
+
+![](./images/git-merge.png)
+![](./images/git-merge2.png)
+
+- Rebase: Khi sử dụng rebase, thì lúc cần tích hợp và nhánh master, nó sẽ đem tất cả các changes từ nhánh feature hay nói cách khác copy tất cả các changes từ nhánh feature đặt lên đầu của master
+
+![](./images/git-rebase.png)
+
+>MERGE HAY REBASE ?
+
+    - Rebase origin/branch vào branch (pull). Nếu muốn một history rõ ràng dễ nhìn, hay còn gọi là linear history, và tránh được trường có thêm các merge commit
+    - Merge feature branch vào master (hoặc một shared branch nào đó). Nếu muốn lưu vết cũng như bảo toàn được history của repo (vd: xem được commit này là từ branch nào,…)và tránh trường hợp rewrite lại tất cả các changes.
+
+
+
 # 4. Server
 
+## 4.1. Giao thức
+- Giao thức cục bộ
+    
+    Giao thức cục bộ có repository nằm ở thư mục khác trên cùng 1 host
+    Clone 1 repository cục bộ: `git clone <đường dẫn .git>`
+    Thêm 1 repository cục bộ: `git add <Tên remote> <đường dẫn .git> `
+- Giao thức HTTP mới ( Smart HTTP ):
+
+    Gần giống với SSh và Git nhưng chạy trên cổng HTTP và dùng các cơ chế định danh của HTTP.
+    Có thể
+    Giao thức HTTP cũ ( Dumb HTTP ):
+    Nếu hệ thống không thể truy cập Smart HTTP, Dumb HTTP được thực hiện.
+    Git Repository được truy cập như 1 file bình thường trên server
+    -> Có thể chọn để chạy read/write trên Smart HTTP hoặc read-only trên Dumb HTTP. Hiếm khi
+    có sự kết hợp giữa 2 server này. 
+- Là giao thức phổ biến và được cài đặt sẵn ở hầu hết mọi nơi.
+
+    Clone SSH Repository: 
+    ```
+    git clone ssh://[user@]server/project.git`\
+    git clone [user@]server:project.git            
+    ```
+- Giao thức Git
+
+    Là 1 gói giao thức đi kèm sẵn với Git, lắng nghe trên cổng 9148, có cơ chế gần giống SSH nhưng
+    hoàn toàn không có định danh.
+    Là 1 rủi ro lớn do không có cơ chế bảo mật, tất cả mọi người có URL dự án đều có thể sửa đổi
+
+## 4.2. Lấy Git từ Server
+
+    Để khởi tạo 1 server Git, cần tạo 1 Repository trống không chứa dữ liệu.
+- Clone project sang Repository đó:  `git clone –bare <Tên> <Đường dẫn>`
+- Đặt thư mục trống lên Server: `scp –r <Đường dẫn Git> <Đường dẫn Server> `
+
+## 4.3. SSH public key
+
+    Mặc định, key SSH của người dùng được lưu ở thư mục ~/.SSH
+    Tạo thư mục và key SSH: ssh-keygen –o 
 
 
