@@ -164,6 +164,15 @@ val <T> List<T>.lastIndex: Int
 ```
 
 ## 9. Higher-Order Functions and Lambdas
+    Higher-Order function là function có thể nhận một function như một param hoặc có thể trả về một function:
+```kotlin
+fun doSomethingWithNumber(number: Int, receiver: (String?) -> Unit) {
+    var result: String? = null
+    //...do complex work with number
+
+    receiver(result)
+}
+```
 
 ## 10. Inline function
 
