@@ -207,3 +207,134 @@ class Derived(p: Int) : Base(p)
         }
     }
     ```
+
+## 3. Interface
+    Khá giống Java8, có thể có cả abstract function và implement function  (có body), property. Không được khởi tạo cho property trong interface, và interface không có backing fields
+
+```kotlin
+interface MyInterface {
+    val prop: Int // abstract
+    val post: String
+        get() = "Any post"
+
+    val propertyWithImplementation: String
+        get() = "foo"
+
+    fun foo() {
+        print(prop)
+    }
+
+    fun bar()
+}
+
+class Child : MyInterface {
+    override val prop: Int = 29
+}
+```
+
+## 4. Visibility Modifiers
+
+    private < protected < internal < public
+     class    subclass    module      all
+    default là public
+
+```kotlin
+open class Outer {
+    private val a = 1
+    protected open val b = 2
+    internal val c = 3
+    val d = 4  // public by default
+
+    protected class Nested {
+        public val e: Int = 5
+    }
+}
+
+class Subclass : Outer() {
+    // a is not visible
+    // b, c and d are visible
+    // Nested and e are visible
+
+    override val b = 5   // 'b' is protected
+}
+
+class Unrelated(o: Outer) {
+    // o.a, o.b are not visible
+    // o.c and o.d are visible (same module)
+    // Outer.Nested is not visible, and Nested::e is not visible either
+}
+
+class C private constructor(a: Int) { ... }
+```
+
+## 5. Data Class
+
+```kotlin
+ data class User(val name: String, val age: Int)
+ ```
+    auto gen function: (chỉ các property trong primary contructor mới được gen)
+    - equals()/hashCode()
+    - toString()  "User(name=John, age=42)"
+    - function copy()
+    - function componentN(). Các hàm này được sinh ra dựa trên số lượng các property của class với N là số thứ tự của các thuộc tính. Như trong trường hợp trên:
+```kotlin
+var user: User = User("tu", 12)
+user.component1() // property 'name', kiểu 'String'
+user.component2() // property 'age', kiểu 'Int'
+```
+
+    Data class phải thỏa mãn những yêu cầu sau:
+    - Primary constructor phải có ít nhất 1 param
+    - Tất cả param của primary constructor phải được khai báo là var hoặc val
+    - Data class không thể là abstract, open, sealed hay inner class.
+    - Data class chỉ có thể implement các interface (Trước phiên bản 1.1)
+
+- Data Classes and Destructuring Declarations
+```kotlin 
+val jane = User("Jane", 35) 
+val (name, age) = jane
+println("$name, $age years of age") // prints "Jane, 35 years of age"
+```
+
+## 6. Nested class
+```kotlin
+class Outer {
+    private val bar: Int = 1
+    class Nested {
+        fun foo() = 2
+    }
+}
+```
+    Tương tự Java, tạo 1 class bên trong thân 1 class khác, đó là Nested class. Trong kotlin, class Nested sẽ không thể truy cập đến các phần tử của class Outer chứa nó như trong Java. Để làm được điều đó, ta cần sử dụng từ khóa inner -> Inner class
+
+```kotlin
+class Outer {
+    private val bar: Int = 1
+    private var fooz: String = "hello"
+    inner class Inner {
+        fun foo() = bar
+        fun baz() {
+          this@Outer.fooz = "hi"
+        }
+    }
+}
+
+val demo = Outer().Inner().foo() // == 1
+```
+
+### Anonymous inner class (Lớp con vô danh)
+    Để khởi tạo anonymous inner class, chúng ta sử dụng [object expression]:
+```kotlin
+textView?.setOnClickListener(object : View.OnClickListener {
+    override fun onClick(v: View?) {
+        //....
+    }
+})
+```
+    Nếu object được khởi tạo là một functional Java interface (một interface chỉ có duy nhất một method), chúng ta có thể sử dụng lambda và khai báo như sau:
+
+```kotlin
+val listener = View.OnClickListener {
+    
+}
+```

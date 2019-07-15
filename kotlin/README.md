@@ -27,6 +27,10 @@
 ## 3. [Classes and objects](./classes-and-object.md)
 - Property và field
 - Class và kế thừa
+- Interface
+- Visibility Modifiers
+- Data Class
+- Nested class
     
 ## 4. [Coroutines](./coroutines.md)
 - Example
