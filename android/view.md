@@ -142,10 +142,10 @@ class IndicatorView : View {
 Sau khi parent view gọi addView(View) thì custom view sẽ được attach vào window. Ở giai đoạn này, custom view sẽ biết được vị trí các view ở xung quanh nó. Lúc này ta có thể findViewById được và lưu vào global reference (nếu cần).
 
 ### OnMeasure
-![](./images/view_measure1.png)
-![](./images/view_measure2.png)
-![](./images/view_measure3.png)
-![](./images/view_measure4.png)
+![](./images/view_measure1.PNG)
+![](./images/view_measure2.PNG)
+![](./images/view_measure3.PNG)
+![](./images/view_measure4.PNG)
 
 giao diện có 2 thành phần chính đó là view cha (ViewGroup) và view con, các view con sẽ nằm trong view cha. Chúng ta có thể xác định kích thước của các view thông qua code Java là LayoutParams() hoặc trong XML là layout_width, layout_height. Để view cha có thể tính toán và sắp xếp các view con của nó một cách hòa thuận, thì cơ bản sẽ như thế này. Khi method onMeasure của view cha được thực hiện, view cha sẽ tìm và coi các thông số (width & height) của tất cả các view con và tính toán xem đứa con đó kích thước sẽ nên như thế nào dựa trên không gian khả dụng và thông số các view con đó yêu cầu muốn có. Sau đó nó sẽ thiết lập các liên kết, rồi chuyển thông tin kích cỡ và lời nhắn thông qua MeasureSpec đến các đứa con của mình (thông tin này sẽ được view con nhận tại method onMeasure của nó). Lời nhắn có thể sẽ mang những ý nghĩa như này AT_MOST: "Dù thế nào đi nữa thì con cũng chỉ cao 400dp mà thôi", hoặc EXACTLY: "Con nhất định phải cao 400dp", hoặc UNSPECIFIED: "Con muốn như thế nào thì tùy ý con"
 
@@ -289,11 +289,11 @@ Việc sắp xếp các View con bên trong ConstraintLayout sẽ dựa vào cá
 
     //thằng cu trên cũng na ná với layout_centerInParent, layout_centerHorizontal và layout_centerVertical của RelativeLayout
 ```
-![](./images/constraint_layout2.png)
+![](./images/constraint_layout2.PNG)
 
 - khi neo 2 cạnh đối diện của một view vào cùng một điểm neo, view đó sẽ được căn vào chính giữa của điểm neo đó
 
-![](./images/constraint_layout1.png)
+![](./images/constraint_layout1.PNG)
 
 - Thế nếu bạn không muốn nó vào giữa, mà là nằm ở vị trí 30% hoặc 70% chiều rộng của ViewGroup cha thì sao. RelativeLayout thì làm thế nào được ~~. Thế mà, ConstraintLayout lại cung cấp một thuộc tính cho phép đạt được điều này: bias - có thể hiểu là bạn muốn sắp xếp View này thiên về bên nào hơn. Giá trị của bias nằm trong khoảng từ 0 đến 1 và có kiểu Float. Thuộc tính này chỉ có tác dụng khi View đang neo 2 cạnh đối diện hoặc cả 4 cạnh. ConstraintLayout cung cấp thuộc tính này cho cả chiều ngang (horizontal) và chiều dọc (vertical). Và nếu khi đã neo 2 cạnh hoặc 4 cạnh, nếu không có giá trị bias nào được chỉ định, bias sẽ có giá trị mặc định là 0.5, tức là vào giữa của 2 hoặc 4 điểm neo
 
@@ -310,22 +310,22 @@ Việc sắp xếp các View con bên trong ConstraintLayout sẽ dựa vào cá
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.7"/>
 ```
-![](./images/constraint_layout3.png)
+![](./images/constraint_layout3.PNG)
 
 -  Giá trị `match_parent` khi xác định width và height của một View sẽ không còn được hỗ trợ với ConstraintLayout nữa. Thay vào đó, ConstraintLayout giới thiệu một giá trị khác: `match_constraint` cũng có mục đích tương tự với match_parent. Ta sẽ sử dụng `match_constraint` bằng cách set `layout_width` hoặc `layout_height` bằng `0dp` và neo 2 cạnh đối diện của View vào 2 bên tương ứng để width/ height của View tràn ra và đạt được hiệu ứng như match_parent.
 
 ## 2.2. Tỷ lệ giữa width và height (constraint dimension ratio)
 - Để tạo 1 Button với width = height hoặc bằng 2 lần heignt thì ngoài set cứng dp thì how to làm :v Trong constraint layout thì `layout_constraintDimensionRatio` dễ như ăn bánh
 
-![](./images/constraint_layout4.png)
+![](./images/constraint_layout4.PNG)
 
 - Để sử dụng thuộc tính này, giá trị của layout_width hoặc layout_height hoặc cả 2 phải là match_constraint. Trong trường hợp cả 2 thuộc tính đều là match_constraint, Android sẽ lấy giá trị lớn nhất của width hoặc height thỏa mãn được việc sắp xếp trong ViewGroup cha mà vẫn giữ được tỷ lệ giữa width và height đã khai báo.
 
-![](./images/constraint_layout5.png)
+![](./images/constraint_layout5.PNG)
 
 - Ngoài ra, với ratio chúng ta cũng có thể xác định rõ xem width phải ràng buộc theo height hay height phải ràng buộc theo width bằng cách thêm W hoặc H vào trước tỷ lệ.
 
-![](./images/constraint_layout6.png)
+![](./images/constraint_layout6.PNG)
 
 Trong trường hợp ở trên, width ở đây phải ràng buộc theo height. Tuy nhiên, vì width đã được set một giá trị cố định là 90dp nên Android sẽ dãn height ra để tỷ lệ 4:3 vẫn được thỏa mãn
 ## 2.3. Chuỗi (Chain)
@@ -334,7 +334,7 @@ Cơ chế của LinearLayout cho phép chúng ta có thể sắp xếp các View
 
 Để tạo một chain, ta cần kết nối các View với nhau theo cả 2 hướng (bi-directional connection) và phải là từ 2 hướng. 2 hướng ở đây có nghĩa là ví dụ đuôi của view 1 neo vào đầu của view 2 và đầu của view 2 cũng cần được neo vào đuôi của view 1. Nếu kết nối chỉ có từ 1 phía, Android sẽ không thể nhận ra được các View đó nằm trong cùng một chain
 
-![](./images/constraint_layout7.png)
+![](./images/constraint_layout7.PNG)
 
 Style của chain:
 
@@ -350,18 +350,18 @@ Style của chain:
 
 Nếu một phần tử C trong chuỗi match_constraint nhưng lại không được set weight và các phần tử còn lại đều được set weight hoặc wrap_content, phần tử C đó sẽ không được hiển thị lên.
 
-![](./images/constraint_layout8.png)
+![](./images/constraint_layout8.PNG)
 
 **4. Packed**: Các View trong chain sẽ được "bó" vào nhau. Với style này, bạn có thể xác định bias cho cả chain bằng cách thay đổi giá trị bias ở phần tử head chain
 `layout_constraintHorizontal_chainStyle="packed"`
 `layout_constraintVertical_chainStyle="packed"`
 
-![](./images/constraint_layout9.png)
+![](./images/constraint_layout9.PNG)
 
 Và với packed chain có bias bằng 0.2
 `layout_constraintHorizontal_bias="0.2"`
 
-![](./images/constraint_layout10.png)
+![](./images/constraint_layout10.PNG)
 
 ## 2.4. Margin
 Trong ConstraintLayout, margin sẽ chỉ có tác dụng trong trường hợp View đã được neo vào đúng hướng với hướng muốn margin. Một điểm khác nữa với margin trong ConstraintLayout là *margin_ không được là số âm.
@@ -387,7 +387,7 @@ Khi một view được GONE đi, mọi giá trị size của View đều sẽ b
     app:layout_constraintStart_toEndOf="@id/btn_visible"
     app:layout_goneMarginStart="98dp"/>
 ```
-![](./images/constraint_layout11.png)
+![](./images/constraint_layout11.PNG)
 
 
 ## 2.4. Guideline
