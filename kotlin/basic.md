@@ -284,3 +284,19 @@ do {
     ```
     return tại biểu thức lambda forEarch
 
+
+## 7. lateinit và lazy
+### lateinit
+- khởi tạo sau, nó sẽ được gán giá trị tại 1 thời điểm nào đó.Nếu biến được gọi trước khi được gán giá trị, nó sẽ ném ra 1 excepiton và crass app
+- kiểu none-null 
+- thường chỉ dùng thông qua injection hoặc unit test
+- chỉ có thể được sử dụng với các thuộc tính var (mutable)
+- không hoạt động với kiểu nguyên thủy
+- `::field.isInitialized` để check xem field đã được khởi tạo chưa
+- khi không bắt buộc phải dùng thì ưu tiên `var foo: Foo? = null`
+
+### lazy
+- khởi tạo lười, 1 hàm sử dụng lambda expression để trả về 1 kiểu Lazy<T> nào đó. Khi chạy lần đầu tiên nó sẽ sử dụng Lazy<T> để truyền vào cho biến . Các lần sau nó sẽ trả lại biến đã được truyền vào trước đó.
+- giúp chúng ta có thể tiết kiệm được bộ nhớ và bỏ qua việc khởi tạo biến cho đến khi nó được yêu cầu.
+- chỉ có thể được sử dụng cho các thuộc tính val (immutable).
+- Trong khi sử dụng Singleton Pattern, chúng ta nên sử dụng lazy, vì nó sẽ được khởi tạo khi sử dụng lần đầu tiên.

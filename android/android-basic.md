@@ -355,11 +355,3 @@ Fragment luôn luôn phải có một constructor rỗng, vì vậy nó có th�
 
 [*continue* ](https://medium.com/mindorks/android-fragments-common-queries-common-mistakes-7b734650e52a)
 
-
-# 3. Single Activity
-
-
-
-# 4. View Group
-
-## 4.1  Constraint Layout

@@ -8,6 +8,7 @@
 - Toán tử so sánh
 - Check kiểu và casting
 - Cấu trúc điều khiển
+- lateinit và lazy
 
 
 
@@ -37,3 +38,9 @@
 - Coroutine là gì?
 - Implementation
 - Coroutines with Retrofit
+
+## 5. [Constants](./constants.md)
+- Companion objects
+- const vals
+- object
+- Bỏ qua class và object
