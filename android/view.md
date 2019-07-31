@@ -409,7 +409,7 @@ Android cũng cung cấp thêm một Widget mới là Guideline (có dạng như
     android:orientation="horizontal"
     app:layout_constraintGuide_percent="0.5"/>
 ```
-![](./images/constraint_layout12.png)
+![](./images/constraint_layout12.PNG)
 
 Guideline chỉ có 2 thuộc tính bạn cần chú ý đến: một là hướng của Guideline: `horizontal` hay `vertical`. Thứ hai là vị trí của Guideline trên bản thiết kế: ở một vị trí xác định `layout_constraintGuide_begin` hoặc ở một vị trí tương đối `layout_constraintGuide_percent`. Vì đây chỉ là một Widget có tác dụng hỗ trợ việc thiết kế chứ không được hiển thị lên, bạn sẽ không thể neo được Guideline vào đâu cả.
 
