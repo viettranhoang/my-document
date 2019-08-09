@@ -199,6 +199,80 @@ Tương tự với activity, điểm khác biệt là fragment `onRestoreInstanc
 
 ![](./images/fragment_lifecycle3.png)
 
+- **Scenario 4: When Fragment B is added to Fragment A**
+```java
+getActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, fragementB).addToBackStack(null).commit();
+```
+    Fragment B : onAttach -> onCreate -> onCreateView -> onActivityCreated -> onStart -> onResume
+    Fragment A: Not
+Sau đó popBackStack() trong Fragment B
+    
+    Fragment B -> onPause -> onStop -> onDestroyView -> onDestroy -> onDetach
+    Fragment A: Not
+Vì B được add lên đầu A, fragment A không bị ảnh hưởng bởi B
+
+- **Scenario 5: When Fragment B replaces Fragment A**
+
+```java
+getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragementB).commit();
+```
+    - Fragment B
+
+    onAttach
+
+    onCreate
+
+    - Fragment A
+
+    onPause
+
+    onStop
+
+    onDestroyView
+
+    onDestroy
+
+    onDetach
+
+    - Fragment B
+
+    onCreateView
+
+    onActivityCreated
+
+    onStart
+
+    onResume
+
+Khi Fragment B được thay thế Fragment A, A bị destroyed, B được create 
+
+- **Scenario 6: When Fragment B replaces Fragment A keeping it in backstack**
+```
+- Fragment B
+
+    onAttach
+
+    onCreate
+
+- Fragment A
+
+    onPause
+
+    onStop
+
+    onDestroyView
+
+- Fragment B
+
+    onCreateView
+
+    onActivityCreated
+
+    onStart
+
+    onResume
+```
+
 ## 2.3 Static Fragment
 
 là kiểu fragment được khai báo (định nghĩa) trực tiếp trong file activity.xml

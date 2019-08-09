@@ -198,12 +198,12 @@ Nhìn vào View lifecycle sẽ thấy 2 method được sử dụng để tự n
 - *Never allocate objects in onDraw*: onDraw() được gọi 60 lần/s, mặc dù bộ thu gom rác(garbage collectors) rất nhanh nhưng nó chạy trên 1 luồng riêng nên ăn rất nhiều pin. Tóm lại là không khởi tạo object trong onDraw 
 
 # 1.3 Thing
-Mình là 1 Big Fan của câu ngạn ngữ thần thành *Không đi làm lại cái bánh xe mà người khác đã làm rồi*.
+Mình là 1 Big Fan của câu ngạn ngữ thần thành *Đừng đi làm lại cái bánh xe mà người khác đã làm rồi*.
 
 Vậy lên theo mình thì với các View Custom basic thì chúng ta lên 
 sử dụng thư viện cho nhanh với điều kiện các thư viện này được maintain dễ custom. Với các TH có yêu cầu design thì tất nhiên rồi, quất thôi tuy có mất nhiều time. Còn với 1 số TH như Toolbar, Loading View, Swip Refersh, NoDataScreen ... của riêng app thì nên custom vì nó khá đơn giản không phải vẽ view nhiều, dễ dàng dùng và sửa đổi về sau.
 
-Nguồn: [1](https://viblo.asia/p/android-custom-view-924lJr6zlPM)
+>Nguồn: [1](https://viblo.asia/p/android-custom-view-924lJr6zlPM)
 [2](https://kipalog.com/posts/Android--Hieu-sau-hon-ve-CustomView-va-Huong-dan-xay-dung-thu-vien-UI-IndicatorView)
 [3](https://medium.com/dualcores-studio/make-an-android-custom-view-publish-and-open-source-99a3d86df228#.oqx0a0tiq)
 [4](https://medium.com/@douglas.iacovelli/the-beauty-of-custom-views-and-how-to-do-it-79c7d78e2088)
@@ -413,6 +413,6 @@ Android cũng cung cấp thêm một Widget mới là Guideline (có dạng như
 
 Guideline chỉ có 2 thuộc tính bạn cần chú ý đến: một là hướng của Guideline: `horizontal` hay `vertical`. Thứ hai là vị trí của Guideline trên bản thiết kế: ở một vị trí xác định `layout_constraintGuide_begin` hoặc ở một vị trí tương đối `layout_constraintGuide_percent`. Vì đây chỉ là một Widget có tác dụng hỗ trợ việc thiết kế chứ không được hiển thị lên, bạn sẽ không thể neo được Guideline vào đâu cả.
 
-
+>Nguồn [1](https://kipalog.com/posts/Android--Constraint-layout---Phan-1--Thiet-ke)
 
 
