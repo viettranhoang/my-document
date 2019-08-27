@@ -42,5 +42,6 @@
 
 - [Custom View](./view.md/#1-custom-view)
 - [Constraint Layout](./view.md/#2-Constraint-Layout)
+- [Recycler View + ListAdapter + Databinding](./recycler-view.md)
 
 ## [Android advance](./android-advance.md)
