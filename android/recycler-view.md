@@ -464,4 +464,6 @@ TH sử dụng trên mình đã áp dụng vào khá nhiều adapter trong proje
 
 Để custom hơn, bạn có thể tạo 1 binding adapter để set list cho recycler view. Trong bài sau mình sẽ viết thêm về việc dùng đám trên với ViewModel và LiveData =))))
 
+Đây là repo chứa toàn code ở trên [Repo](https://github.com/vitham/demo-load-more-recycler-view)
+
 >Nguồn [1](https://viblo.asia/p/cach-bind-list-du-lieu-toi-recyclerview-voi-android-data-binding-m68Z00M6ZkG) [2](https://developer.android.com/topic/libraries/data-binding/generated-binding) [3](https://guides.codepath.com/android/using-the-recyclerview) [4](https://proandroiddev.com/android-data-binding-listadapter-9e72ce50e8c7)
