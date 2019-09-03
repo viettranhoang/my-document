@@ -427,5 +427,25 @@ List<Fragment> fragments = getChildFragmentManager().getFragments();
 Fragment luôn luôn phải có một constructor rỗng, vì vậy nó có thể đc khởi tạo khi khôi phục trạng thái hoạt động của nó. Chúng ta được khuyến nghị rằng các subclass sẽ không có bất kì tham số nào khác. Vì constructor đó sẽ không được gọi khi fragment được khởi tạo lại. <br>
 Đó là lý do tại sao chúng ta sẽ sử dụng Bundle để thay thế cho constructor trong việc truyền tham số cho fragment. Đây là cách để hệ thống dễ dàng trong việc khôi phục các giá trị khi fragment khởi tạo lại
 
+
+### commit và commitAllowingStateLoss
+Nêu activity đang không ở trạng thái `resumed` và ta cố gắng commit một fragment, ứng dụng sẽ bị crash. Để tránh việc này diễn ra, ta cần check activity hay fragment có ở trạng thái `resumed` hay không với phương thức `isAdded` / `isResumed`. Một giải pháp khác, nếu ta không quan tâm tới trạng thái của fragment, ta có thể sử dụng phương thức `commitAllowingStateLoss`. Điều này đảm bảo fragment được add và replace dù cho activity đang không ở trạng thái resumed.
+
+### Fragment option menu
+Khi sử dụng option menu bên trong fragment, hãy ghi nhớ thêm dòng lệnh sau:
+```java
+@Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+```
+Khi sử dụng toolbar bên trong fragment, ta có thể inflate menu bằng đoạn code:
+```java
+getToolbar().inflateMenu(R.menu.toolbar_menu_gmr);
+```
+Ngoài ra, ta cũng có thể ghi đè phương thức `createOptionsMenu`.
+
 [*continue* ](https://medium.com/mindorks/android-fragments-common-queries-common-mistakes-7b734650e52a)
+
 
