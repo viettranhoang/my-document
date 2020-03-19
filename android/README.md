@@ -51,3 +51,6 @@
 ### 1. [Unit Testing](./testing/unit-testing.md)
 
 ### 2. [UI Testing](./testing/ui-testing.md)
+
+## Build Android
+### 1. [Tự động release lên playstore](./build/cd-android.md)
