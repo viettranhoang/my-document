@@ -54,3 +54,5 @@
 
 ## Build Android
 ### 1. [Tự động release lên playstore](./build/cd-android.md)
+
+## [Template for Android studio](./template-android)

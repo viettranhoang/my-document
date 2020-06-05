@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="3"
+    name="Recycler View Adapter Basic"
+    description="Creates Recycler View Adapter with layout item file ."
+    >
+
+    <category value="Other" />
+
+   <parameter
+        id="adapterClass"
+        name="Adapter Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="DefaultAdapter" />
+
+    <parameter
+        id="layoutItem"
+        name="Layout Item Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="default_item"/>
+
+    <parameter
+        id="modelClass"
+        name="Model Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Model" />
+		
+	<parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>
