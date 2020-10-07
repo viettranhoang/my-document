@@ -1,0 +1,1 @@
+## [Guide](https://medium.com/gits-apps-insight/tutorial-create-your-own-template-for-android-studio-1aaa9b4cb18)

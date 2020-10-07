@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="3"
+    name="Fragment Base"
+    description="Creates Base Fragment."
+    >
+
+    <category value="Other" />
+
+   <parameter
+        id="fragmentClass"
+        name="Fragment name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Default" />
+
+    <parameter
+        id="layout"
+        name="Layout name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="default_fragment"/>
+		
+	<parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>
