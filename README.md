@@ -2,7 +2,7 @@
 Some of my knowledge about git, android, kotlin
 
 
-## [Git](./git)
+## [Git](./Git)
 ## [Android](./android)
 ### [Android basic](./android/android-basic.md)
 - 1. [Activity](./android/android-basic.md/#1-activity)
