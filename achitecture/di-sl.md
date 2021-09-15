@@ -1,3 +1,4 @@
+# Dependency Injection vs Service Locator
 
 Ngày xưa khi vẫn còn mài ... trên trường có 1 người anh ném cho tôi vài keyword như thế này: SOLID, IoC, DI, Dagger các thứ. Và sau khi mò mẫm hỏi cụ google tôi như đả thông kinh mạch, tu thành chính quả với 2 từ "Không hiểu!". Và cho đến tận bây giờ kinh mạch của tôi vẫn thế! Sốc tập 1
     
