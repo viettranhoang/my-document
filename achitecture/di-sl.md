@@ -15,13 +15,13 @@ Sau khi bổ sung kinh mạch thì đại khái nó như thế này:
 
 ![](./images/di-sl0.png)
 
-## Dependency Injection: 
+## Dependency Injection
 
 Các dependencies được cung cấp cho Target Object, mà không cần object làm bất cứ cái gì, nói cách khác dependency được `injected` vào target object
 
 ![](./images/di-sl1.png)
 
-## Service Locator:
+## Service Locator
 
 Target Object truy cập các dependencies của nó từ một Locator(container, register...), giúp tìm kiếm các dependencies được yêu cầu và cung cấp nó cho target object. Nó không được `injected` nhưng được `located` thay thế.
 
