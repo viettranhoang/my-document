@@ -38,7 +38,7 @@ So sánh 2 cái ảnh về DI và SL bên trên, ta có thể thấy bên SL:
 
 Martin Fowler có 1 câu rằng: 
 
-    “The choice between Service Locator and Dependency Injection is less important than the principle of separating service configuration from the use of services within an application.”
+>“The choice between Service Locator and Dependency Injection is less important than the principle of separating service configuration from the use of services within an application.”
 
 Tôi thấy nó đúng. 
 
@@ -49,3 +49,9 @@ Project Android ở Gapo đang sử dụng Koin là SL:
 
 ## Kết luận
 Chung quy lại, giữa DI và SL, dùng cái nào cũng được nhưng chúng ta phải hiểu và làm chủ được nó. Với các framwork về DI, có thể dùng hoặc không dùng nhưng nếu dùng hãy dùng 1 cách có hiểu biết!
+
+>Nguồn 
+[1](https://medium.com/mobile-app-development-publication/dependency-injection-and-service-locator-4dbe4559a3ba)
+[2](https://www.rivu.dev/service-locator-and-dependency-injection-which-is-what/)
+
+
