@@ -1,32 +1,38 @@
 # Dependency Injection vs Service Locator
 
-Ngày xưa khi vẫn còn mài ... trên trường có 1 người anh ném cho tôi vài keyword như thế này: SOLID, IoC, DI, Dagger các thứ. Và sau khi mò mẫm hỏi cụ google tôi như đả thông kinh mạch, tu thành chính quả với 2 từ "Không hiểu!". Và cho đến tận bây giờ kinh mạch của tôi vẫn thế! Sốc tập 1
+Ngày xưa khi vẫn còn mài mông trên trường có một người anh chỉ điểm cho tôi một vài bộ bí quyết như: SOLID, IoC, DI, Dagger. Và sau khi stackOververFlow luận kiếm cùng các hảo hữu gian hồ, kinh mạnh của tôi như được đả thông đén mức tẩu hỏa nhập ma và cho đến tận bây giờ tôi vẫn đang lạc lối giữa ma đạo! Sốc tập 1.
     
-Đến 1 ngày xưa khác, google cho ra lò ngôn ngữ Kotlin cùng framework Koin mà Gapo đang sử dụng, nôm na thì nó là thư viện để inject dependencies. Tôi như thuyền gặp gió ở giữa Hawaii, bời vì nó impl DI nhẹ tênh. Xong rồi ông anh bên trên của tôi thấy tôi dùng Koin lại ném cho tôi 1 keyword là Service Locator gọi tắt là SL, ơ, "What the heck?". Mày mò thêm chút thì tôi biết được rằng 
+Đến một ngày của thế kỷ 21, google chính thức hỗ trợ ngôn ngữ Kotlin để phát triển Android. Lợi dụng những điểm mạnh của ngôn ngữ hiện đại này, cộng đồng Android Developer cho ra đời thư viện lightweight injection. Như buồn ngủ gật chiếu manh, và rồi tôi lại được ông anh bên trên đánh thức tôi bằng bộ trưởng pháp SL, tên khoa học là Service Locator. Lại luận kiếm thêm một chút tôi ngỡ ra rằng:
     
     Koin là một Service Locator, không phải là Dependency Injector.
 
-Thôi toang, tôi chợt nhận ra sài hoài mà có hiểu gì đâu! Sốc tập 2.
+Sốc tập 2. 
 
-`Vậy DI và SL khác nhau cái gì mà đều giải quyết được bài toán IoC vậy?`
+Dependency Inversion là một nguyên lý để thiết kế và viết code.
 
-Sau khi bổ sung kinh mạch thì đại khái nó như thế này:
-- Ông DI ông ý như kiểu bị covid, vừa vào bệnh viện phát là bị chích liền, vì bác sĩ biết ông ý cần tiêm cái gì, cũng chả cần ông ý nói gì bác sĩ gì cả. 
-- Ông SL như kiểu ông ý vào nhà thuốc, bảo bác sĩ rằng tôi muốn thuốc này, thế là bác sĩ lấy thuốc trong tủ ra đưa cho ông ý.
+Inversion of Control là một design pattern được tạo ra để code có thể tuân thủ nguyên lý Dependency Inversion. 
+
+Dependency Injection và Service Locator là hai cách để hiện thực Inversion of Control Pattern.
+
+`Vậy DI và SL khác nhau như thế nào?`
 
 ![](./images/di-sl0.png)
 
 ## Dependency Injection
 
-Các dependencies được cung cấp cho Target Object, mà không cần object làm bất cứ cái gì, nói cách khác dependency được `injected` vào target object
+Các dependencies được cung cấp cho Target Object, mà object không cần làm bất cứ việc gì, nói cách khác dependency được `injected` vào target object
 
 ![](./images/di-sl1.png)
 
 ## Service Locator
 
-Target Object truy cập các dependencies của nó từ một Locator(container, register...), giúp tìm kiếm các dependencies được yêu cầu và cung cấp nó cho target object. Nó không được `injected` nhưng được `located` thay thế.
+Target Object truy cập các dependencies cần thiết từ Locator(container, register...). Locator giúp tìm kiếm các dependencies được yêu cầu và cung cấp nó cho target object. Nó không được `injected` nhưng được `located` thay thế.
 
 ![](./images/di-sl2.png)
+
+## Real world
+- DI: ví dụ như bạn bị dương tính với covid, sau khi nhập viện bạn sẽ được chủ động tiêm thuốc mà cơ thể bạn cần.
+- SL: ví dụ như bạn bị dương tính với covid, nhưng bệnh viện quá tải nên bạn phải tự điều trị ở nhà, bạn phải chủ động tự đi lấy thuốc theo đơn bác sỹ kê.
 
 ## Vậy cái nào hơn?
 
