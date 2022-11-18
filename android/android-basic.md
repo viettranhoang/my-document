@@ -88,6 +88,7 @@
 
 ### **Launch Mode**
 >Launch mode cho phép ta định nghĩa cách mà một instance mới của một activity được liên kết với task hiện tại.
+>Ref: https://vntalking.com/giai-thich-launch-mode-va-tasks-trong-android.html
 
 **Sử dụng Manifest**
 ```xml
